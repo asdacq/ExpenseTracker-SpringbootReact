@@ -1,6 +1,7 @@
 package com.reactAndSpringBoot.ExpenseApp.Model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 public class Person {
 
     @Id  // Primary Key
+    @Column(name = "person_id", nullable = false)
     private Long id;
     private String name;
     private String email;

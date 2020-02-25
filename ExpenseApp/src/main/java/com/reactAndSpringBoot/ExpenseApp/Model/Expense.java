@@ -1,5 +1,7 @@
 package com.reactAndSpringBoot.ExpenseApp.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -17,9 +19,7 @@ public class Expense {
     @Column
     private String location; // Location
 
-    public String getLocation() {
-        return location;
-    }
+    public String getLocation() { return location; }
 
     public void setLocation(String location) {
         this.location = location;
@@ -41,12 +41,24 @@ public class Expense {
         this.expenseDate = expenseDate;
     }
 
-    public Long getId() {
-        return id;
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
+
+    public Category getCategory() {
+        return category;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     // Many Expense can go into one Category
@@ -54,5 +66,6 @@ public class Expense {
     private Category category;
     // Many Expense can go into one User
     @ManyToOne
+    @JsonIgnore
     private Person person;
 }
